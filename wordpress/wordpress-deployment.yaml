@@ -20,6 +20,9 @@ metadata:
   labels:
     app: wordpress
 spec:
+  selector:
+    matchLabels:
+      app: wordpress
   replicas: 3
   strategy:
     type: Recreate
