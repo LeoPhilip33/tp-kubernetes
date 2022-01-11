@@ -10,6 +10,11 @@ Mise en **production** des éléments développé dans le namspace **development
 
 ## Start the cluster and scale:
 
+// MODE DEV 
+kubectl create secret generic mysql-pass --from-literal=password=YOUR_PASSWORD
+kubectl create -f wordpress/mysql-deployment.yaml
+kubectl create -f wordpress/wordpress-deployment.yaml
+
 **kubectl create secret generic mysql-pass --from-literal=password=YOUR_PASSWORD**
 kubectl get secrets (optionnel)
 **kubectl create -f wordpress/mysql-deployment.yaml**
