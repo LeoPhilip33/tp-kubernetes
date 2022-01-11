@@ -39,6 +39,8 @@ minikube stop
 kubectl create secret generic mysql-pass --from-literal=password=YOUR_PASSWORD
 kubectl create -f wordpress/mysql-deployment.yaml
 kubectl create -f wordpress/wordpress-deployment.yaml
+kubectl create -f wordpress/wordpress-htaccess-configmap.yam
+minikube service wordpress --url
 
 kubectl delete secret mysql-pass
 kubectl delete deployment -l app=wordpress
