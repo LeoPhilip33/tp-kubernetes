@@ -12,8 +12,8 @@ Mise en **production** des éléments développé dans le namspace **development
 
 **kubectl create secret generic mysql-pass --from-literal=password=YOUR_PASSWORD**
 kubectl get secrets (optionnel)
-**kubectl create -f mysql-deployment.yaml**
-**kubectl create -f wordpress-deployment.yaml**
+**kubectl create -f wordpress/mysql-deployment.yaml**
+**kubectl create -f wordpress/wordpress-deployment.yaml**
 kubectl get pv (optionnel)
 kubectl get pvc (optionnel)
 kubectl get pods (optionnel)

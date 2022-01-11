@@ -7,13 +7,42 @@ metadata:
 spec:
   ports:
     - port: 80
-      nodePort: 30303
+      nodePort: 31476
   selector:
     app: wordpress
     tier: frontend
-  type: NodePort
+  type: LoadBalancer
 ---
-apiVersion: apps/v1
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: wp-pv
+  labels:
+    app: wordpress
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/wordpress"  
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wp-pv-claim
+  labels:
+    app: wordpress
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: wordpress
@@ -23,7 +52,7 @@ spec:
   selector:
     matchLabels:
       app: wordpress
-  replicas: 3
+      tier: frontend
   strategy:
     type: Recreate
   template:
@@ -32,12 +61,9 @@ spec:
         app: wordpress
         tier: frontend
     spec:
-      # Use the stork scheduler to enable more efficient placement of the pods
-      schedulerName: stork
       containers:
       - image: wordpress:4.8-apache
         name: wordpress
-        imagePullPolicy: 
         env:
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
@@ -45,7 +71,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mysql-pass
-              key: password.txt
+              key: password
         ports:
         - containerPort: 80
           name: wordpress
