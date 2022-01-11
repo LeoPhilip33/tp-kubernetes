@@ -45,5 +45,6 @@ minikube service wordpress --url
 kubectl delete secret mysql-pass
 kubectl delete deployment -l app=wordpress
 kubectl delete service -l app=wordpress
+kubectl delete configmap wordpress-php-options
 kubectl delete pvc -l app=wordpress
 kubectl delete pv -l app=wordpress
