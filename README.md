@@ -34,6 +34,12 @@ kubectl delete pv -l app=wordpress
 minikube stop
 
 
+## Installer Prometheus et Grafana 
+kubectl apply --filename https://raw.githubusercontent.com/giantswarm/prometheus/master/manifests-all.yaml
+kubectl get pods,svc,replicaset,deploy -n monitoring (optionnel)
+kubectl port-forward --namespace monitoring service/grafana 3000:3000
+
+
 // MODE DEV 
 
 kubectl create secret generic mysql-pass --from-literal=password=YOUR_PASSWORD
