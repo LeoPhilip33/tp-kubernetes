@@ -8,23 +8,6 @@ Le namespace **BDD** est celui qui stock toutes les données.
 ## **Production :**
 Mise en **production** des éléments développé dans le namspace **development.**
 
-<!-- ## Pour creer les namespaces
-kubectl apply -f namespaces.yaml
-
-## Pour creer les resourcequotas
-kubectl apply -f quotas.yaml 
-
-## Pour creer le configmap 
-kubectl get configmap configmap-wordpress
-
-## Create MySQL Portworx PersistentVolume(PV) and PersistentVolumeClaim(PVC)
-kubectl apply -f wordpress/mysql-vol.yaml
-kubectl apply -f wordpress/wordpress-vol.yaml
-kubectl create secret generic mysql-pass --from-file=wordpress/password.txt
-kubectl create -f wordpress/mysql.yaml
-kubectl create -f wordpress/wordpress-deployment.yaml -->
-
-
 ## Start the cluster and scale:
 
 **kubectl create secret generic mysql-pass --from-literal=password=YOUR_PASSWORD**
