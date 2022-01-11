@@ -24,6 +24,7 @@ kubectl get pvc (optionnel)
 kubectl get pods (optionnel)
 kubectl get services (optionnel)
 **minikube service wordpress --url**
+**kubectl create -f wordpress/wordpress-htaccess-configmap.yaml**
 
 ## Scale Wordpress and mysql:
 kubectl scale --replicas X deployments wordpress-mysql
