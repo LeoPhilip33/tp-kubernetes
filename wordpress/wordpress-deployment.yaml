@@ -82,7 +82,8 @@ spec:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
           claimName: wp-pv-claim
-      - configMap:
-        name: wordpress-php-options
-        
-        
+      volumes:
+      - name: wordpress-htaccess
+        configMap:
+          configMapName: wordpress-php-options
+          defaultMode: 0400
