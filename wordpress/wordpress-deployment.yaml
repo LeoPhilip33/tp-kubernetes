@@ -82,7 +82,6 @@ spec:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
           claimName: wp-pv-claim
-      - configMap:
-        name: wordpress-php-options
+      
         
         
