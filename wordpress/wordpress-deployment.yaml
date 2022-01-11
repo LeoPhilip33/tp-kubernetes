@@ -87,3 +87,8 @@ spec:
       #   configMap:
       #     configMapName: wordpress-php-options
       #     defaultMode: 0400
+      volumes:
+      - name: wordpress-htaccess
+        configMap:
+          configMapName: wordpress-php-options
+          defaultMode: 0400
