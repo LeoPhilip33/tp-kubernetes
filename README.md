@@ -6,7 +6,7 @@ Le namespace **development** est celui qui stock l'état d'avancement avant de l
 Le namespace **BDD** est celui qui stock toutes les données.
 
 ## **Production :**
-Mise en **production** des éléments développé dans le namespace **development.**
+Mise en **production** des éléments développé dans le namspace **development.**
 
 ## Start the cluster and scale:
 
@@ -18,8 +18,8 @@ kubectl get pv (optionnel)
 kubectl get pvc (optionnel)
 kubectl get pods (optionnel)
 kubectl get services (optionnel)
-**kubectl create -f wordpress/wordpress-htaccess-configmap.yaml**
 **minikube service wordpress --url**
+**kubectl create -f wordpress/wordpress-htaccess-configmap.yaml**
 
 ## Scale Wordpress and mysql:
 kubectl scale --replicas X deployments wordpress-mysql
@@ -37,14 +37,14 @@ minikube stop
 // MODE DEV 
 
 kubectl create secret generic mysql-pass --from-literal=password=YOUR_PASSWORD
-kubectl create -f wordpress/mysql-deployment.yaml
-kubectl create -f wordpress/wordpress-deployment.yaml
-kubectl create -f wordpress/wordpress-htaccess-configmap.yaml
+kubectl create -f mysql-deployment.yaml
+kubectl create -f wordpress-deployment.yaml
+kubectl create -f wordpress-htaccess-configmap.yaml
 minikube service wordpress --url
 
 kubectl delete secret mysql-pass
+kubectl delete configmap wordpress-php-options
 kubectl delete deployment -l app=wordpress
 kubectl delete service -l app=wordpress
-kubectl delete configmap wordpress-php-options
 kubectl delete pvc -l app=wordpress
 kubectl delete pv -l app=wordpress
