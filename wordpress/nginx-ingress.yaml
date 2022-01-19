@@ -1,18 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-ingress
+  name: wordpress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
+  defaultBackend:
+      service:
+        name: wordpress
+        port:
+          number: 80
   rules:
     - host: hello-world.info
       http:
         paths:
-          - path: /
+          - path: /test
             pathType: Prefix
             backend:
               service:
-                name: web
+                name: wordpress
                 port:
-                  number: 8080
+                  number: 80
