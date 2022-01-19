@@ -40,6 +40,7 @@ kubectl create secret generic mysql-pass --from-literal=password=YOUR_PASSWORD
 kubectl create -f mysql-deployment.yaml
 kubectl create -f wordpress-deployment.yaml
 kubectl create -f wordpress-htaccess-configmap.yaml
+kubectl create -f nginx-ingress.yaml
 minikube service wordpress --url
 
 kubectl delete secret mysql-pass
@@ -47,4 +48,5 @@ kubectl delete configmap wordpress-php-options
 kubectl delete deployment -l app=wordpress
 kubectl delete service -l app=wordpress
 kubectl delete pvc -l app=wordpress
+kubectl delete -f nginx-ingress.yaml
 kubectl delete pv -l app=wordpress
