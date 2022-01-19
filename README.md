@@ -60,10 +60,10 @@ kubectl --namespace monitoring port-forward svc/alertmanager-main 9093
 // MODE DEV 
 
 kubectl create secret generic mysql-pass --from-literal=password=YOUR_PASSWORD
-kubectl create -f mysql-deployment.yaml
-kubectl create -f wordpress-deployment.yaml
-kubectl create -f wordpress-htaccess-configmap.yaml
-kubectl create -f nginx-ingress.yaml
+kubectl create -f ./wordpress/mysql-deployment.yaml
+kubectl create -f ./wordpress/wordpress-deployment.yaml
+kubectl create -f ./wordpress/wordpress-htaccess-configmap.yaml
+kubectl create -f ./wordpress/nginx-ingress.yaml
 minikube service wordpress --url
 
 kubectl delete secret mysql-pass
