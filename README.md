@@ -24,7 +24,7 @@ Mise en **production** des éléments développé dans le namspace **development
 **kubectl create -f ./wordpress/nginx-ingress.yaml** </br>
 **minikube service wordpress --url**
 
-## **Scale Wordpress and mysql:**
+## **Scale Wordpress & mysql:**
 **kubectl scale --replicas X deployments wordpress-mysql** </br>
 **kubectl scale --replicas X deployments wordpress**
 
